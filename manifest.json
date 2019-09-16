@@ -1,0 +1,41 @@
+{
+   "author": "LoadMonkey",
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "images/action_off_19.png"
+      },
+      "default_title": "__MSG_manifest_browser_action__"
+   },
+   "content_scripts": [ {
+      "js": [ "libs/url-toolkit.js", "libs/spark-md5.js", "libs/hls.js", "js/loader.js" ],
+      "matches": [ "*://www.hlsloader.com/*rec.html*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": true,
+      "js": [ "js/inject.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": "default-src 'self' ; img-src 'self' http://* https://* data: ; script-src 'self' ; object-src 'self' ; style-src 'self' http://* https://* 'unsafe-inline' ; connect-src 'self' http://* https://* blob: ;",
+   "default_locale": "en",
+   "description": "__MSG_manifest_description__",
+   "homepage_url": "https://www.hlsloader.com/",
+   "icons": {
+      "128": "images/icon_128.png",
+      "16": "images/icon_16.png",
+      "32": "images/icon_32.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAh3hm5gC4vIXa2MneB+sAzS6u/+tNzxM8dn+GXS/oeZ7V5EHaJVvpwL/5svY+ecUQ2rjoreYK6gMdBAAYcVYIbo7gxcEhEVibZv+0CKYkBc4TM8auLZrfx17GMjq4uifFbMM5GhTKW3yVq7oT0VGq07JhVprGbmqFA5tsc+sKo14cTDvjxnfJnvD0iAZnevoaBbwV5yVWNea566JBY429TLa385qwN8D+BBJhLs/siPBX3NN9tOQqMuIJ4rrOkTd0zpeJejg51Id0T4+UGOjWvbSJVXLstIhvEvQN+QcnJdF5JKaiazm+Tqa030Y56jq6V9wO8e/DhZJfYYdjU0KSNQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_manifest_name__",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "options.html"
+   },
+   "permissions": [ "webRequest", "webRequestBlocking", "tabs", "storage", "unlimitedStorage", "downloads", "notifications", "http://*/*", "https://*/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.2.0"
+}
